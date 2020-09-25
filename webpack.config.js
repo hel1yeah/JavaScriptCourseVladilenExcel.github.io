@@ -27,7 +27,8 @@ module.exports = {
   devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 4200,
-    hot: isDev
+    hot: isDev,
+    open: 'firefox'
   },
   plugins: [
     new CleanWebpackPlugin(), // плагин для очистки билда
@@ -54,7 +55,13 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+              reloadAll: true
+            }
+          },
           // Translates CSS into CommonJS
           'css-loader',
           // Compiles Sass to CSS
