@@ -2,6 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -24,12 +25,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html' // вобавляет сюда каждый билд новый создайнны bundle.blablabla.js
     }),
-    new CopyPlugin([
-    {
-      from: path.resolve(__dirname, 'src/favicon.ico'),
-        to: path.resolve(__dirname, 'dist')
-    }
-    ]),
+    new CopyPlugin({
+      patterns:
+        [{
+          from: path.resolve(__dirname, './src/favicon.ico'),
+          to: path.resolve(__dirname, 'dist')
+        }]
+    }),
     new MiniCssExtractPlugin({
       filename: 'bundle.[hash].css'
     })
