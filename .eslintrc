@@ -7,6 +7,9 @@
 
   },
   "rules": {
+    "arrow-parens": "off",
+    "linebreak-style": 0,
+    "ignoreComments": true
 
   },
 

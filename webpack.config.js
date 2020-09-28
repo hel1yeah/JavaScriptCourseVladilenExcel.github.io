@@ -1,67 +1,68 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
-const filename = ext => isDev ? `bondle.${ext}` : `bondle.[hash].${ext}`;
+const filename = (ext) => isDev ? `bondle.${ext}` : `bondle.[hash].${ext}`;
 
 const jsLoaders = () => {
   const loaders = [{
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env']
-      }
-    }
-  ]
+    loader: 'babel-loader',
+    options: {
+      presets: ['@babel/preset-env'],
+    },
+  },
+  ];
   if (isDev) {
-    loaders.push('eslint-loader')
+    loaders.push('eslint-loader');
   }
-  return loaders
+  return loaders;
 };
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: ['@babel/polyfill','./index.js'],
-  output : {
+  entry: ['@babel/polyfill', './index.js'],
+  output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
-  resolve:{
+  resolve: {
     extensions: ['.js'],
-    alias:{
+    alias: {
       '@': path.resolve(__dirname, 'src'),
       '@core': path.resolve(__dirname, 'src/code'),
-    }
+    },
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 4200,
     hot: isDev,
-    open: 'firefox'
+    open: 'firefox',
   },
   plugins: [
     new CleanWebpackPlugin(), // плагин для очистки билда
     new HtmlWebpackPlugin({
-      template: 'index.html', // вобавляет сюда каждый билд новый создайнны bundle.blablabla.js
+      template: 'index.html',
+      // вобавляет сюда каждый билд новый создайнны bundle.blablabla.js
       minify: {
         removeComments: isProd,
         collapseWhitespace: isProd,
-      }
+      },
     }),
     new CopyPlugin({
       patterns:
         [{
           from: path.resolve(__dirname, './src/favicon.ico'),
-          to: path.resolve(__dirname, 'dist')
-        }]
+          to: path.resolve(__dirname, 'dist'),
+        }],
     }),
     new MiniCssExtractPlugin({
-      filename: filename('css')
-    })
+      filename: filename('css'),
+    }),
   ],
   module: {
     rules: [
@@ -72,8 +73,8 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: isDev,
-              reloadAll: true
-            }
+              reloadAll: true,
+            },
           },
           // Translates CSS into CommonJS
           'css-loader',
@@ -85,15 +86,9 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: jsLoaders(),
-        loader: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
+      },
     ],
   },
-  
+
 
 };
