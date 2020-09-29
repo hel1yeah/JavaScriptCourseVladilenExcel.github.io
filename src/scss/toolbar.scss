@@ -2,5 +2,6 @@
 @import 'mixins';
 
 .exel__toolbar{
-  
+  border-top: 1ox solid $border-color;
+  border-bottom: 1ox solid $border-color;
 }
