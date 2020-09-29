@@ -1,6 +1,35 @@
 @import 'vars';
 @import 'mixins';
 
-.exel__formula{
-  
+.exel__formula {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  & .formula__button {
+    min-width: 60px;
+    height: 30px;
+    font-style: italic;
+  }
+
+  & .formula__input {
+    width: 100%;
+  }
+
+  & .formula__item {
+    height: 30px;
+    width: 100%;
+    border: 1px solid transparent;
+    font-size: $size18px;
+    outline: transparent;
+    border-radius: .3em;
+    border: 2px solid $border-color;
+    &:hover {
+      border: 2px solid $border-color;
+    }
+
+    &:focus {
+      border: 2px solid #1a73e8;
+    }
+  }
 }
