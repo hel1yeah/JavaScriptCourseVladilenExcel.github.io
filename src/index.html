@@ -11,134 +11,43 @@
 
 <body>
 
-  <section id="app" class="container">
+  <section id="app">
 
-    <div class="exel">
-
-      <div class="exel__header">
-        <input type="text" class="input" value=" Новая таблица ">
-
-        <div class="button__wrapper">
-
-          <button class="button" type="button">
-            <i class="material-icons">exit_to_app</i>
-          </button>
-
-          <button class="button" type="button">
-            <i class="material-icons">delete</i>
-          </button>
-
-        </div>
-
+    <div class="db">
+      <div class="db__header">
+        <h1>Excel Dashboard</h1>
       </div>
 
-      <div class="exel__toolbar">
-
-        <button class="button" type="button">
-          <i class="material-icons">format_align_left</i>
-        </button>
-
-        <button class="button" type="button">
-          <i class="material-icons">format_align_center</i>
-        </button>
-        <button class="button" type="button">
-          <i class="material-icons">format_align_right</i>
-        </button>
-
-        <button class="button" type="button">
-          <i class="material-icons">format_bold</i>
-        </button>
-        <button class="button" type="button">
-          <i class="material-icons">format_italic</i>
-        </button>
-
-        <button class="button" type="button">
-          <i class="material-icons">format_underlined</i>
-        </button>
-
+      <div class="db__new">  
+        <a href="/" class="db__create">
+        Новая таблица
+        </a>
       </div>
 
-      <div class="exel__formula">
-
-        <button class="formula__button" type="button">
-          fx
-        </button>
-
-        <div class="formula__input">
-          <input type="text" class="formula__item"  placeholder="формула" spellcheck="false">
+      <div class="db__table">
+        <div class="db__list-header">
+          <span>Имя таблицы</span>
+          <span>Дата открытия</span>
         </div>
+        <ul class="db__list">
+          <li class="db__record">
+            <a href="/">Таблица 1</a>
+            <span>30.09.2020</span> 
+          </li>
+          <li class="db__record">
+            <a href="/">Таблица 2</a>
+            <strong>30.09.2020</strong>
+          </li>
+          <li class="db__record">
+            <a href="/">Таблица 3</a>
+            <strong>30.09.2020</strong>
+          </li>
+          <li class="db__record">
+            <a href="/">Таблица 1</a>
+            <strong>30.09.2020</strong>
+          </li>
 
-      </div>
-
-      <div class="exel__table">
-
-        <div class="row">
-
-          <div class="row-info">
-
-          </div>
-
-          <div class="row-data">
-
-            <div class="column">A</div>
-            <div class="column">B</div>
-            <div class="column">C</div>
-            <div class="column">A</div>
-            <div class="column">B</div>
-            <div class="column">C</div>
-            <div class="column">A</div>
-            <div class="column">B</div>
-            <div class="column">C</div>
-            <div class="column">A</div>
-            <div class="column">B</div>
-            <div class="column">C</div>
-            <div class="column">A</div>
-            <div class="column">B</div>
-            <div class="column">C</div>
-            <div class="column">A</div>
-            <div class="column">B</div>
-            <div class="column">C</div>
-            <div class="column">A</div>
-            <div class="column">B</div>
-            <div class="column">C</div>
-            <div class="column">A</div>
-            <div class="column">B</div>
-            <div class="column">C</div>
-
-          </div>
-
-
-        </div>
-
-
-        <div class="row">
-        
-          <div class="row-info">
-            1
-          </div>
-        
-          <div class="row-data">
-            <div class="cell selected">a1</div>
-            <div class="cell ">b2</div>
-            <div class="cell ">b3</div>
-        
-          </div>
-        
-        </div>
-        <div class="row">
-        
-          <div class="row-info">
-            1
-          </div>
-        
-          <div class="row-data">
-            <div class="cell ">a1</div>
-            <div class="cell ">b2</div>
-            <div class="cell ">b3</div>
-        
-          </div>
-        
-        </div>
+        </ul>
       </div>
 
     </div>
