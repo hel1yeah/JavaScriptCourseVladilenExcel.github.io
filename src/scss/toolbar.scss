@@ -1,0 +1,20 @@
+@import 'vars';
+@import 'mixins';
+
+.exel__toolbar{
+  height: 40px;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  padding: 0 10px;
+  display: flex;
+  align-items:center;
+  justify-content: flex-start;
+
+  & > button:not(:first-child) {
+    margin-left: 5px;
+  }
+
+  & button {
+    @include button();
+  }
+}

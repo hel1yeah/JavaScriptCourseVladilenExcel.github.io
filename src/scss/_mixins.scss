@@ -1,0 +1,42 @@
+@mixin button ($color: green) {
+  height: 30px;
+  width: 30px;
+  padding: 3px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  color: rgba(0, 0, 0, .8);
+  border: transparent;
+  border-radius: .3em;
+  
+  &>i {
+    font-size: $size18px;
+    display: block;
+  }
+
+  &:active,
+  &.active {
+    color: $color;
+  }
+  &:focus{
+    outline: transparent;
+  }
+
+
+  &:hover {
+    background-color: silver;
+    cursor: pointer;
+  }
+}
+
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin  clear-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
