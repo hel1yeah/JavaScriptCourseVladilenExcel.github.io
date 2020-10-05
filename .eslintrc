@@ -11,10 +11,9 @@
     "linebreak-style": 0,
     "ignoreComments": 0,
     "require-jsdoc": 0,
+    "operator-linebreak": "off",
     "max-len": ["error", { "code": 120 }]
-
   },
   
-
   "extends": ["eslint:recommended", "google"]
 }
