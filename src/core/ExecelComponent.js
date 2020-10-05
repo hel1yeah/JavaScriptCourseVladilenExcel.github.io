@@ -1,8 +1,8 @@
-import {DomListener} from '../core/DomListener';
+import {DomListener} from './DomListener';
 
 export class ExecelComponent extends DomListener {
   // возварщает шаблон компонента
   toHTML() {
-    return '';
+    // return '<h1></h1>';
   }
 }
