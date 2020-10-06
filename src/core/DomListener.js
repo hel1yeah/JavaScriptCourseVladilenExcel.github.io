@@ -15,13 +15,16 @@ export class DomListener {
       if (!this[method]) {
         throw new Error(`метод ${method} в компоненте ${this.name || 'hz'}`);
       }
-      // console.log(method);
+      this[method] = this[method].bind(this);
       this.$root.on(listener, this[method]);
     });
   }
 
   removeDOMListeners() {
-
+    this.listeners.forEach(listener => {
+      const method = getMethodName(listener);
+      this.$root.off(listener, this[method]);
+    });
   }
 }
 function getMethodName(eventName) {

@@ -14,4 +14,8 @@ export class ExecelComponent extends DomListener {
   init() {
     this.initDOMListeners();
   }
+
+  destroy() {
+    this.removeDOMListeners();
+  }
 }
