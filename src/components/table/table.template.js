@@ -5,21 +5,25 @@ const CODES = {
 
 function toCell() {
   return `
-  <div class="cell" contenteditable>
-  
-  </div>
+  <div class="cell" contenteditable></div>
   `;
 }
 function toColumn(colName) {
   return `
-  <div class="column">${colName}</div>
+  <div class="column">
+  ${colName}
+  <div class="col-resize" data-resize="col"></div>
+  </div>
   `;
 }
 
 function createRow(index, content) {
+  const resizer = index ? '<div class="row-resize" data-resize="row"></div>' : '';
   return `
     <div class="row">
-      <div class="row-info">${index}</div>
+      <div class="row-info">${index}
+      ${resizer}
+      </div>
       <div class="row-data"> ${content} </div>
     </div>
   `;
