@@ -10,7 +10,7 @@ function toCell() {
 }
 function toColumn(colName) {
   return `
-  <div class="column">
+  <div class="column" data-type="resizable">
   ${colName}
   <div class="col-resize" data-resize="col"></div>
   </div>
