@@ -4,7 +4,7 @@
 .exel__table {
   overflow-x: auto;
   padding-bottom: 2px;
-  
+
 
   .row {
     display: flex;
@@ -14,17 +14,40 @@
 
   }
 
-  .row-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 60px;
-    border: 1px solid $border-color;
-    background-color: $bgc-cell;
-    border-top: transparent;
+  .row {
+    min-height: 30px;
+    &-info {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 60px;
+      border: 1px solid $border-color;
+      background-color: $bgc-cell;
+      border-top: transparent;
+    }
+
+    &-resize {
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      opacity: 0;
+      height: 4px;
+      background-color: $outline-locor;
+      transition: .3s all;
+      z-index: 1000;
+
+        &:hover {
+          opacity: 1;
+          cursor: row-resize;
+        }
+    }
   }
 
+
   .column {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,6 +64,7 @@
   }
 
   .cell {
+
     min-width: 90px;
     padding: 5px;
     height: 100%;
@@ -48,11 +72,30 @@
     border-top: 1px solid transparent;
     border-left: 1px solid transparent;
     white-space: nowrap;
+
     &.selected {
-      border:transparent;
+      border: transparent;
       outline: 2px solid $outline-locor;
 
     }
+  }
+
+  .col-resize {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: $outline-locor;
+    opacity: 0;
+    transition: .3s all;
+    z-index: 1000;
+
+    &:hover {
+      opacity: 1;
+      cursor: col-resize;
+    }
+
   }
 
 
