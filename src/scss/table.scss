@@ -74,6 +74,7 @@
     white-space: nowrap;
 
     &.selected {
+      z-index: 4;
       border: transparent;
       outline: 2px solid $outline-locor;
 

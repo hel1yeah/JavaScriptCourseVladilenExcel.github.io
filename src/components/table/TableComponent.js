@@ -2,6 +2,7 @@ import {ExecelComponent} from '@core/ExecelComponent';
 import {createTable} from './table.template';
 import {resizeHandler} from './table.resize';
 import {shouldResize} from './table.function';
+import {TableSelection} from './TableSelection';
 // import {$} from '../../core/dom';
 
 export class TableComponent extends ExecelComponent {
@@ -15,6 +16,15 @@ export class TableComponent extends ExecelComponent {
 
   toHTML() {
     return createTable();
+  }
+  prepare() {
+    this.selection = new TableSelection();
+  }
+
+  init() {
+    super.init();
+    const $cell = this.$root.find('[data-id="1:0"]');
+    this.selection.select($cell);
   }
 
   onMousedown(event) {

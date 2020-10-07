@@ -55,6 +55,15 @@ class Dom {
   findAll(selector) {
     return this.$el.querySelectorAll(selector);
   }
+  find(selector) {
+    return $(this.$el.querySelector(selector));
+  }
+  addClass(className) {
+    return this.$el.classList.add(className);
+  }
+  removeClass(className) {
+    return this.$el.classList.remove(className);
+  }
   css(styles = {}) {
     Object
         .keys(styles)
