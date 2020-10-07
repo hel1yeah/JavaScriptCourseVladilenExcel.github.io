@@ -15,6 +15,7 @@
   }
 
   .row {
+    min-height: 30px;
     &-info {
       position: relative;
       display: flex;
@@ -35,6 +36,7 @@
       height: 4px;
       background-color: $outline-locor;
       transition: .3s all;
+      z-index: 1000;
 
         &:hover {
           opacity: 1;
@@ -87,6 +89,7 @@
     background-color: $outline-locor;
     opacity: 0;
     transition: .3s all;
+    z-index: 1000;
 
     &:hover {
       opacity: 1;
