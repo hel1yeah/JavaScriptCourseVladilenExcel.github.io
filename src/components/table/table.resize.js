@@ -54,7 +54,7 @@ export function resizeHandler($root, event) {
       rows.forEach(el => el.style.width = value + 'px');
     }
 
-    if (type == 'col') {
+    if (type === 'col') {
       $resizer.css({
         opacity: 0,
         bottom: '0',

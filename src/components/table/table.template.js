@@ -1,3 +1,4 @@
+import {getQuantityRow} from '../../core/untils';
 const CODES = {
   A: 65,
   Z: 90,
@@ -15,6 +16,7 @@ function toCell(row) {
     <div class="cell" 
     contenteditable 
     data-col="${col}"
+    data-type="cell"
     data-id="${row}:${col}">
     </div>
     `;
@@ -60,7 +62,7 @@ export function createTable(rowsCount = getQuantityRow()) {
 
   rows.push(createRow('', cols));
 
-  for (let row = 1; row <= rowsCount; row++) {
+  for (let row = 0; row <= rowsCount; row++) {
     const cells = new Array(colsCount)
         .fill('')
         .map(toCell(row))
@@ -69,11 +71,6 @@ export function createTable(rowsCount = getQuantityRow()) {
   }
 
   return rows.join('');
-}
-
-// const red = getQuantityRow();
-function getQuantityRow() {
-  return Math.floor((window.innerHeight -160) / 30);
 }
 
 
