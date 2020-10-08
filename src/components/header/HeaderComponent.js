@@ -2,6 +2,14 @@ import {ExecelComponent} from '@core/ExecelComponent';
 
 export class HeaderComponent extends ExecelComponent {
   static className = 'exel__header';
+
+  constructor($root, options) {
+    super($root, {
+      name: 'HeaderComponent',
+      ...options,
+    });
+  }
+
   toHTML() {
     return `
       <input type="text" class="input" value=" Новая таблица ">

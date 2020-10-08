@@ -1,13 +1,28 @@
+import {getQuantityRow} from '../../core/untils';
 const CODES = {
   A: 65,
   Z: 90,
 };
 
-function toCell(_, index) {
-  return `
-  <div class="cell" contenteditable data-col="${index}"></div>
-  `;
+// function toCell(_, index) {
+//   return `
+//   <div class="cell" contenteditable data-col="${index}"></div>
+//   `;
+// }
+
+function toCell(row) {
+  return function(_, col) {
+    return `
+    <div class="cell" 
+    contenteditable 
+    data-col="${col}"
+    data-type="cell"
+    data-id="${row}:${col}">
+    </div>
+    `;
+  };
 }
+
 function toColumn(colName, index) {
   return `
   <div class="column" data-type="resizable" data-col="${index}">
@@ -47,20 +62,15 @@ export function createTable(rowsCount = getQuantityRow()) {
 
   rows.push(createRow('', cols));
 
-  for (let i = 1; i <= rowsCount; i++) {
+  for (let row = 0; row <= rowsCount; row++) {
     const cells = new Array(colsCount)
         .fill('')
-        .map(toCell)
+        .map(toCell(row))
         .join('');
-    rows.push(createRow(i, cells));
+    rows.push(createRow(row + 1, cells));
   }
 
   return rows.join('');
-}
-
-// const red = getQuantityRow();
-function getQuantityRow() {
-  return Math.floor((window.innerHeight -160) / 30);
 }
 
 
