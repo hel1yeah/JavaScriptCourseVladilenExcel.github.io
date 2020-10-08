@@ -44,10 +44,14 @@ export class TableComponent extends ExecelComponent {
     this.$on('formula:done', () => {
       this.selection.current.focus();
     });
+    this.$subscribe(state => {
+      console.log('TableState', state);
+    });
   }
   selectCell($cell) {
     this.selection.select($cell);
     this.$emit('table:select', $cell);
+    // this.$dispatch({type: 'test'});
   }
 
   onMousedown(event) {
@@ -62,7 +66,7 @@ export class TableComponent extends ExecelComponent {
 
         this.selection.selectGroup($cells);
       } else {
-        this.selection.select($target);
+        this.selectCell($target);
       }
     }
   }

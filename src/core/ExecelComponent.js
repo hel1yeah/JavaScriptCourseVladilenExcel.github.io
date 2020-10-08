@@ -5,7 +5,9 @@ export class ExecelComponent extends DomListener {
     super($root, options.listeners);
     this.name = options.name || '';
     this.emitter = options.emitter;
+    this.store = options.store;
     this.unsubscribers = [];
+    this.storeSub = null;
 
     console.log(options);
 
@@ -27,6 +29,13 @@ export class ExecelComponent extends DomListener {
     const unsub = this.emitter.subscribe(event, fn);
     this.unsubscribers.push(unsub);
   }
+  $dispatch(action) {
+    this.store.dispatch(action);
+  }
+  $subscribe(fn) {
+    this.storeSub = this.store.subscribe(fn);
+    // sub.unsubscribe();
+  }
 
   // инициализируем компонент
   // добавляем дом слушателей
@@ -38,5 +47,6 @@ export class ExecelComponent extends DomListener {
   destroy() {
     this.removeDOMListeners();
     this.unsubscribers.forEach(unsub => unsub());
+    this.storeSub.unsubscribe();
   }
 }
