@@ -7,6 +7,7 @@ export class ToolbarComponent extends ExecelComponent {
     super($root, {
       name: 'ToolbarComponent',
       listeners: ['click'],
+      ...options,
     });
   }
 

@@ -8,16 +8,21 @@ import {nextSelector} from './table.function';
 // import {getQuantityRow} from '../../core/untils';
 // import {renge} from '../../core/untils';
 import {matrix} from './table.function';
+// import {emitter} from '../../core/Emitter';
 import {$} from '../../core/dom';
 
 export class TableComponent extends ExecelComponent {
   static className = 'exel__table';
 
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
+      name: 'TableComponent',
       listeners: [
         'mousedown',
-        'keydown'],
+        'keydown',
+        'input',
+      ],
+      ...options,
     });
   }
 
@@ -30,8 +35,19 @@ export class TableComponent extends ExecelComponent {
 
   init() {
     super.init();
-    const $cell = this.$root.find('[data-id="1:0"]');
+    this.selectCell(this.$root.find('[data-id="1:0"]'));
+
+    this.$on('formula:input', text => {
+      this.selection.current.text(text);
+    } );
+
+    this.$on('formula:done', () => {
+      this.selection.current.focus();
+    });
+  }
+  selectCell($cell) {
     this.selection.select($cell);
+    this.$emit('table:select', $cell);
   }
 
   onMousedown(event) {
@@ -63,11 +79,13 @@ export class TableComponent extends ExecelComponent {
 
     if (keys.includes(key) && !event.shiftKey) {
       event.preventDefault();
-      const id =this.selection.current.id(true);
+      const id = this.selection.current.id(true);
       const $next = this.$root.find(nextSelector(key, id));
-      this.selection.select($next);
+      this.selectCell($next);
     }
-    // console.log(event.key);
+  }
+  onInput(event) {
+    this.$emit('table:input', $(event.target));
   }
 }
 
